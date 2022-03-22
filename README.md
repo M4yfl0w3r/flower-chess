@@ -1,5 +1,4 @@
-# flower-chess
+## flower-chess
 
-Pieces images:
-https://commons.wikimedia.org/wiki/Category:PNG_chess_pieces/Standard_transparent
+[Pieces images used](https://commons.wikimedia.org/wiki/Category:PNG_chess_pieces/Standard_transparent)
 
