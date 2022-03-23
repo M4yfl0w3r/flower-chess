@@ -1,28 +1,42 @@
 #include "../include/Chess_Piece.h"
 
-Chess_Piece::Chess_Piece(double pos_x, double pos_y, const std::string& filename) : pos_x{pos_x}, pos_y{pos_y} 
+Chess_Piece::Chess_Piece(const std::string& filename)
 {
-  king_texture = new sf::Texture();
-  king_sprite = new sf::Sprite();
+  piece_texture = new sf::Texture();
+  piece_sprite = new sf::Sprite();
 
   std::string path = "/home/hope/code/flower-chess/images/";
   load_texture(path.append(filename));
-
-  king_sprite -> setPosition(pos_x, pos_y);
 }
 
 auto Chess_Piece::load_texture(const std::string& filename) -> void
 {
-  king_texture -> loadFromFile(filename);
-  king_sprite -> setTexture(*king_texture);
+  piece_texture -> loadFromFile(filename);
+  piece_sprite -> setTexture(*piece_texture);
+}
+
+auto Chess_Piece::set_position(double x, double y) -> void
+{
+  piece_sprite -> setPosition(x, y);
 }
 
 auto Chess_Piece::draw(sf::RenderTarget& target, sf::RenderStates states) const -> void
 {
-  target.draw(*king_sprite);
+  target.draw(*piece_sprite);
 }
 
-King_Piece::King_Piece(double x, double y, const std::string& filename) : Chess_Piece(x, y, filename) {}
+King_Piece::King_Piece(const std::string& filename) : Chess_Piece(filename) {}
+
+Queen_Piece::Queen_Piece(const std::string& filename) : Chess_Piece(filename) {}
+
+Bishop_Piece::Bishop_Piece(const std::string& filename) : Chess_Piece(filename) {}
+
+Pawn_Piece::Pawn_Piece(const std::string& filename) : Chess_Piece(filename) {}
+
+Rook_Piece::Rook_Piece(const std::string& filename) : Chess_Piece(filename) {}
+
+Knight_Piece::Knight_Piece(const std::string& filename) : Chess_Piece(filename) {}
+
 
 
 
