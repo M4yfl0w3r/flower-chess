@@ -2,7 +2,32 @@
 
 Flower_Board::Flower_Board() : square_size{60}
 {
+  remaining_pieces.flower_push_back(new Rook_Piece("b_rook.png", 0, 0));
+  remaining_pieces.flower_push_back(new Rook_Piece("w_rook.png", 0, 7));
+  remaining_pieces.flower_push_back(new Rook_Piece("b_rook.png", 7, 0));
+  remaining_pieces.flower_push_back(new Rook_Piece("w_rook.png", 7, 7));
 
+  remaining_pieces.flower_push_back(new Knight_Piece("b_knight.png", 1, 0));
+  remaining_pieces.flower_push_back(new Knight_Piece("w_knight.png", 1, 7));
+  remaining_pieces.flower_push_back(new Knight_Piece("b_knight.png", 6, 0));
+  remaining_pieces.flower_push_back(new Knight_Piece("w_knight.png", 6, 7));
+
+  remaining_pieces.flower_push_back(new Bishop_Piece("b_bishop.png", 2, 0));
+  remaining_pieces.flower_push_back(new Bishop_Piece("w_bishop.png", 2, 7));
+  remaining_pieces.flower_push_back(new Bishop_Piece("b_bishop.png", 5, 0));
+  remaining_pieces.flower_push_back(new Bishop_Piece("w_bishop.png", 5, 7));
+
+  remaining_pieces.flower_push_back(new Queen_Piece("b_queen.png", 3, 0));
+  remaining_pieces.flower_push_back(new Queen_Piece("w_queen.png", 3, 7));
+  
+  remaining_pieces.flower_push_back(new King_Piece("b_king.png", 4, 0));
+  remaining_pieces.flower_push_back(new King_Piece("w_king.png", 4, 7));
+
+  for (int i = 0; i < 8; i++)
+    remaining_pieces.flower_push_back(new Pawn_Piece("w_pawn.png", i, 6));
+
+  for (int i = 0; i < 8; i++)
+    remaining_pieces.flower_push_back(new Pawn_Piece("b_pawn.png", i, 1));
 }
 
 auto Flower_Board::draw(sf::RenderTarget& target, sf::RenderStates states) const -> void
@@ -29,4 +54,10 @@ auto Flower_Board::draw(sf::RenderTarget& target, sf::RenderStates states) const
 			target.draw(rect);	
 		}
 	}
+
+  for (std::size_t i = 0; i < remaining_pieces.flower_size(); i++)
+  {
+    remaining_pieces[i] -> draw(target, states);
+  }  
 }
+
