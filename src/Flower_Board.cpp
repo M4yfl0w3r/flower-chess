@@ -36,8 +36,6 @@ auto Flower_Board::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 	auto colors = std::make_tuple(sf::Color (234,182,118), sf::Color (153, 76, 0));
 
-	int x = 0;
-
 	for (int i = 0; i < 8; i++) 
 	{
 		for (int j = 0; j < 8; j++)
@@ -55,9 +53,57 @@ auto Flower_Board::draw(sf::RenderTarget& target, sf::RenderStates states) const
 		}
 	}
 
-  for (std::size_t i = 0; i < remaining_pieces.flower_size(); i++)
+  for (size_t i = 0; i < remaining_pieces.flower_size(); i++)
   {
     remaining_pieces[i] -> draw(target, states);
   }  
 }
 
+auto Flower_Board::on_mouse_pressed(int x, int y) -> void
+{
+  mouse_pos_x = static_cast<int>(x / square_size);
+  mouse_pos_y = static_cast<int>(y / square_size);
+
+  mouse_pressed = true;
+
+  if (!check_if_empty(mouse_pos_x, mouse_pos_y))
+  {
+    piece_clicked = true;
+  }
+}
+
+auto Flower_Board::on_mouse_moved(int x, int y) -> void
+{
+  mouse_pos_x = x / square_size;
+  mouse_pos_y = y / square_size;
+
+  if (mouse_pressed && piece_clicked)
+  { 
+    update_piece_position(mouse_pos_x, mouse_pos_y);
+  }
+}
+
+auto Flower_Board::on_mouse_released(int x, int y) -> void
+{
+  mouse_pressed = false;
+  piece_clicked = false;
+}
+
+auto Flower_Board::check_if_empty(int x, int y) -> bool
+{
+  for (size_t i = 0; remaining_pieces.flower_size(); i++)
+  {
+    if (remaining_pieces[i] -> pos_x == x && remaining_pieces[i] -> pos_y == y)
+    {
+      current_piece_to_move = i;
+      return false; 
+    }
+  }
+
+  return true;
+}
+
+auto Flower_Board::update_piece_position(int x, int y) -> void
+{
+  remaining_pieces[current_piece_to_move] -> set_position(x, y); 
+}

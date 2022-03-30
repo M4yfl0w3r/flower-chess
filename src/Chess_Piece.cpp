@@ -1,20 +1,24 @@
 #include "../include/Chess_Piece.h"
-#include <memory>
 
-Chess_Piece::Chess_Piece(const std::string& filename, int x, int y)
+Chess_Piece::Chess_Piece(const std::string& filename, int x, int y) : pos_x{x}, pos_y{y}
 {
   piece_texture = std::make_shared<sf::Texture>();
   piece_sprite = std::make_shared<sf::Sprite>();
 
   std::string path = "/home/hope/Code/flower-chess/images/";
   load_texture(path.append(filename));
-  piece_sprite -> setPosition(x * 60, y * 60);
+  set_position(pos_x, pos_y);
 }
 
 auto Chess_Piece::load_texture(const std::string& filename) -> void
 {
   piece_texture -> loadFromFile(filename);
   piece_sprite -> setTexture(*piece_texture);
+}
+
+auto Chess_Piece::set_position(int x, int y) -> void
+{
+  piece_sprite -> setPosition(x * 60, y * 60);
 }
 
 auto Chess_Piece::draw(sf::RenderTarget& target, sf::RenderStates states) const -> void

@@ -4,10 +4,15 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Drawable.hpp>
 
+#include <iostream>
 #include <memory>
 
 class Chess_Piece : public sf::Drawable
 {	
+
+public:
+  int pos_x;
+  int pos_y;
 
 protected:
   std::shared_ptr<sf::Texture> piece_texture;
@@ -16,11 +21,11 @@ protected:
 public:
 	Chess_Piece(const std::string&, int, int);
 
-  auto virtual draw(sf::RenderTarget&, sf::RenderStates) const -> void;
+  auto virtual draw(sf::RenderTarget&, sf::RenderStates) const -> void override;
 
+public:
   auto load_texture(const std::string&) -> void;
-  auto set_position(double x, double y) -> void;
-
+  auto set_position(int, int) -> void;
 };
 
 class King_Piece : public Chess_Piece

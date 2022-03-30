@@ -3,6 +3,7 @@
 
 #include "src/Flower_Board.cpp"
 #include "src/Chess_Piece.cpp"
+#include <SFML/Window/Mouse.hpp>
 
 int main()
 {
@@ -13,6 +14,8 @@ int main()
 
   while (window.isOpen())
   {
+    window.clear(sf::Color::White);
+
     while (window.pollEvent(event))
     {
       if (event.type == sf::Event::Closed)
@@ -20,21 +23,32 @@ int main()
         window.close();
       }
 
+      else if (event.type == sf::Event::KeyPressed)
+      {
+        if (event.key.code == sf::Keyboard::Escape)
+        {
+          window.close();
+        }
+      }
+
       else if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) 
       {
-
+        board.on_mouse_pressed(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y);
       }
 
-
-      if (event.key.code == sf::Keyboard::Escape)
+      else if (event.type == sf::Event::MouseMoved)
       {
-        window.close();
+        board.on_mouse_moved(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y);  
       }
+
+      else if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left)
+      {
+        board.on_mouse_released(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y);
+      } 
     } 
-    
+
     window.draw(board);
  
-
     window.display();
   }
 
