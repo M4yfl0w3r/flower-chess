@@ -6,7 +6,7 @@ Chess_Piece::Chess_Piece(const std::string& filename, int x, int y)
   piece_texture = std::make_shared<sf::Texture>();
   piece_sprite = std::make_shared<sf::Sprite>();
 
-  std::string path = "/home/hope/code/flower-chess/images/";
+  std::string path = "/home/hope/Code/flower-chess/images/";
   load_texture(path.append(filename));
   piece_sprite -> setPosition(x * 60, y * 60);
 }
