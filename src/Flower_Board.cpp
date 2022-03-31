@@ -78,8 +78,11 @@ auto Flower_Board::on_mouse_moved(int x, int y) -> void
   mouse_pos_y = y / square_size;
 
   if (mouse_pressed && piece_clicked)
-  { 
-    update_piece_position(mouse_pos_x, mouse_pos_y);
+  {
+    if (remaining_pieces[current_piece_to_move] -> move_valid(mouse_pos_x, mouse_pos_y))
+    {
+      update_piece_position(mouse_pos_x, mouse_pos_y);
+    }
   }
 }
 
@@ -93,6 +96,7 @@ auto Flower_Board::check_if_empty(int x, int y) -> bool
 {
   for (size_t i = 0; remaining_pieces.flower_size(); i++)
   {
+    std::cout << "tutaj " << i << "\n";
     if (remaining_pieces[i] -> pos_x == x && remaining_pieces[i] -> pos_y == y)
     {
       current_piece_to_move = i;

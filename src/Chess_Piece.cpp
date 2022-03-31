@@ -26,6 +26,11 @@ auto Chess_Piece::draw(sf::RenderTarget& target, sf::RenderStates states) const 
   target.draw(*piece_sprite);
 }
 
+auto Chess_Piece::move_valid(int x, int y) -> bool
+{
+  return false;
+}
+
 King_Piece::King_Piece(const std::string& filename, int x, int y) : Chess_Piece(filename, x, y) {}
 
 Queen_Piece::Queen_Piece(const std::string& filename, int x, int y) : Chess_Piece(filename, x, y) {}
@@ -38,6 +43,57 @@ Rook_Piece::Rook_Piece(const std::string& filename, int x, int y) : Chess_Piece(
 
 Knight_Piece::Knight_Piece(const std::string& filename, int x, int y) : Chess_Piece(filename, x, y) {}
 
+auto King_Piece::move_valid(int x, int y) -> bool
+{
+  std::multimap<int, int> valid_positions;
+
+  valid_positions.insert(std::pair<int, int>(pos_x - 1, pos_y - 1));
+  valid_positions.insert(std::pair<int, int>(pos_x, pos_y - 1));
+  valid_positions.insert(std::pair<int, int>(pos_x + 1 , pos_y - 1));
+
+  valid_positions.insert(std::pair<int, int>(pos_x - 1, pos_y));
+  valid_positions.insert(std::pair<int, int>(pos_x, pos_y));
+  valid_positions.insert(std::pair<int, int>(pos_x + 1, pos_y));
+  
+  valid_positions.insert(std::pair<int, int>(pos_x - 1, pos_y + 1));
+  valid_positions.insert(std::pair<int, int>(pos_x, pos_y + 1));
+  valid_positions.insert(std::pair<int, int>(pos_x + 1, pos_y + 1));
+
+  typedef std::multimap<int, int>::iterator map_iterator;
+
+  std::pair<map_iterator, map_iterator> result = valid_positions.equal_range(x);
+
+  for (map_iterator it = result.first; it != result.second; it++)
+  {
+    if (it -> second == y)
+    {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+auto Pawn_Piece::move_valid(int x, int y) -> bool
+{
+  std::multimap<int, int> valid_positions;
+
+  valid_positions.insert(std::pair<int, int>(pos_x, pos_y - 1));
+
+  typedef std::multimap<int, int>::iterator map_iterator;
+
+  std::pair<map_iterator, map_iterator> result = valid_positions.equal_range(x);
+
+  for (map_iterator it = result.first; it != result.second; it++)
+  {
+    if (it -> second == y)
+    {
+      return true;
+    }
+  }
+
+  return false;
+}
 
 
 

@@ -3,7 +3,6 @@
 
 #include "src/Flower_Board.cpp"
 #include "src/Chess_Piece.cpp"
-#include <SFML/Window/Mouse.hpp>
 
 int main()
 {
