@@ -95,5 +95,34 @@ auto Pawn_Piece::move_valid(int x, int y) -> bool
   return false;
 }
 
+auto Knight_Piece::move_valid(int x, int y) -> bool
+{
+  std::multimap<int, int> valid_positions;
 
+  valid_positions.insert(std::pair<int, int>(pos_x - 1, pos_y - 2));
+  valid_positions.insert(std::pair<int, int>(pos_x + 1, pos_y - 2));
+
+  valid_positions.insert(std::pair<int, int>(pos_x - 2, pos_y - 1));
+  valid_positions.insert(std::pair<int, int>(pos_x + 2, pos_y - 1));
+  
+  valid_positions.insert(std::pair<int, int>(pos_x - 2, pos_y + 1));
+  valid_positions.insert(std::pair<int, int>(pos_x + 2, pos_y + 1));
+
+  valid_positions.insert(std::pair<int, int>(pos_x - 1, pos_y + 2));
+  valid_positions.insert(std::pair<int, int>(pos_x + 1, pos_y + 2));
+
+  typedef std::multimap<int, int>::iterator map_iterator;
+
+  std::pair<map_iterator, map_iterator> result = valid_positions.equal_range(x);
+
+  for (map_iterator it = result.first; it != result.second; it++)
+  {
+    if (it -> second == y)
+    {
+      return true;
+    }
+  }
+
+  return false;
+}
 

@@ -83,5 +83,6 @@ class Knight_Piece : public Chess_Piece
 public:
   Knight_Piece(const std::string&, int, int); 
 
-  // auto move_valid(int, int) -> bool override;
+  auto move_valid(int, int) -> bool override;
 };
+
