@@ -45,7 +45,7 @@ class Queen_Piece: public Chess_Piece
 public:
   Queen_Piece(const std::string&, int, int);
   
-  // auto move_valid(int, int) -> bool override;
+  auto move_valid(int, int) -> bool override;
 };
 
 

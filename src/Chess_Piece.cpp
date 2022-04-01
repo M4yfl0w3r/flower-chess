@@ -214,6 +214,60 @@ auto Bishop_Piece::move_valid(int x, int y) -> bool
   return false;
 }
 
+auto Queen_Piece::move_valid(int x, int y) -> bool
+{
+  std::multimap<int, int> valid_positions;
+
+  int i = 0;
+
+  while (pos_x + i < 8)
+  {
+    valid_positions.insert(std::pair<int, int>(pos_x + i, pos_y + i));  
+    valid_positions.insert(std::pair<int, int>(pos_x + i, pos_y - i));  
+    valid_positions.insert(std::pair<int, int>(pos_x + i, pos_y));  
+    i++;
+  }
+
+  i = 0;
+
+  while (pos_x - i > 0)
+  {
+    valid_positions.insert(std::pair<int, int>(pos_x - i, pos_y - i));  
+    valid_positions.insert(std::pair<int, int>(pos_x - i, pos_y + i));  
+    valid_positions.insert(std::pair<int, int>(pos_x - i, pos_y));  
+    i++;
+  }
+  
+  i = 0;
+
+  while (pos_y + i < 8)
+  {
+    valid_positions.insert(std::pair<int, int>(pos_x, pos_y + i));  
+    i++;
+  }
+
+  i = 0;
+
+  while (pos_y - i > 0)
+  {
+    valid_positions.insert(std::pair<int, int>(pos_x, pos_y - i));  
+    i++;
+  }
+
+  typedef std::multimap<int, int>::iterator map_iterator;
+
+  std::pair<map_iterator, map_iterator> result = valid_positions.equal_range(x);
+
+  for (map_iterator it = result.first; it != result.second; it++)
+  {
+    if (it -> second == y)
+    {
+      return true;
+    }
+  }
+
+  return false;
+}
 
 
 
