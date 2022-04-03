@@ -26,7 +26,7 @@ auto Chess_Piece::draw(sf::RenderTarget& target, sf::RenderStates states) const 
   target.draw(*piece_sprite);
 }
 
-auto Chess_Piece::move_valid(int x, int y) -> bool
+auto Chess_Piece::move_valid(int x, int y, std::string color) -> bool
 {
   return false;
 }
@@ -43,7 +43,7 @@ Rook_Piece::Rook_Piece(const std::string& filename, int x, int y) : Chess_Piece(
 
 Knight_Piece::Knight_Piece(const std::string& filename, int x, int y) : Chess_Piece(filename, x, y) {}
 
-auto King_Piece::move_valid(int x, int y) -> bool
+auto King_Piece::move_valid(int x, int y, std::string color) -> bool
 {
   std::multimap<int, int> valid_positions;
 
@@ -74,7 +74,7 @@ auto King_Piece::move_valid(int x, int y) -> bool
   return false;
 }
 
-auto Pawn_Piece::move_valid(int x, int y) -> bool
+auto Pawn_Piece::move_valid(int x, int y, std::string color) -> bool
 {
   std::multimap<int, int> valid_positions;
 
@@ -95,7 +95,7 @@ auto Pawn_Piece::move_valid(int x, int y) -> bool
   return false;
 }
 
-auto Knight_Piece::move_valid(int x, int y) -> bool
+auto Knight_Piece::move_valid(int x, int y, std::string color) -> bool
 {
   std::multimap<int, int> valid_positions;
 
@@ -126,7 +126,7 @@ auto Knight_Piece::move_valid(int x, int y) -> bool
   return false;
 }
 
-auto Rook_Piece::move_valid(int x, int y) -> bool
+auto Rook_Piece::move_valid(int x, int y, std::string color) -> bool
 {
   std::multimap<int, int> valid_positions;
 
@@ -177,7 +177,7 @@ auto Rook_Piece::move_valid(int x, int y) -> bool
   return false;
 }
 
-auto Bishop_Piece::move_valid(int x, int y) -> bool
+auto Bishop_Piece::move_valid(int x, int y, std::string color) -> bool
 {
   std::multimap<int, int> valid_positions;
 
@@ -214,7 +214,7 @@ auto Bishop_Piece::move_valid(int x, int y) -> bool
   return false;
 }
 
-auto Queen_Piece::move_valid(int x, int y) -> bool
+auto Queen_Piece::move_valid(int x, int y, std::string color) -> bool
 {
   std::multimap<int, int> valid_positions;
 

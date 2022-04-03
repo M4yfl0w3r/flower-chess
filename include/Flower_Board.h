@@ -21,6 +21,8 @@ public:
   int mouse_pos_x = 0;
   int mouse_pos_y = 0;
 
+  std::string color = "white";
+
   bool mouse_pressed = false;
   bool piece_clicked = false;
 
@@ -31,10 +33,8 @@ public:
 	Flower_Board();
 
 public:
-  auto check_if_empty(int, int) -> bool;
+  auto field_empty(int, int) -> bool;
   auto update_piece_position(int, int) -> void;
-
-public:
   auto on_mouse_pressed(int, int) -> void;
   auto on_mouse_moved(int, int) -> void;
   auto on_mouse_released(int, int) -> void;

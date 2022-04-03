@@ -61,12 +61,12 @@ auto Flower_Board::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 auto Flower_Board::on_mouse_pressed(int x, int y) -> void
 {
-  mouse_pos_x = static_cast<int>(x / square_size);
-  mouse_pos_y = static_cast<int>(y / square_size);
+  mouse_pos_x = x / square_size;
+  mouse_pos_y = y / square_size;
 
   mouse_pressed = true;
-
-  if (!check_if_empty(mouse_pos_x, mouse_pos_y))
+ 
+  if (!field_empty(mouse_pos_x, mouse_pos_y))
   {
     piece_clicked = true;
   }
@@ -77,13 +77,14 @@ auto Flower_Board::on_mouse_moved(int x, int y) -> void
   mouse_pos_x = x / square_size;
   mouse_pos_y = y / square_size;
 
-  if (mouse_pressed && piece_clicked)
+  if (mouse_pressed && piece_clicked) 
   {
-    if (remaining_pieces[current_piece_to_move] -> move_valid(mouse_pos_x, mouse_pos_y))
+    if (remaining_pieces[current_piece_to_move] -> move_valid(mouse_pos_x, mouse_pos_y, color))
     {
       update_piece_position(mouse_pos_x, mouse_pos_y);
     }
   }
+
 }
 
 auto Flower_Board::on_mouse_released(int x, int y) -> void
@@ -92,11 +93,10 @@ auto Flower_Board::on_mouse_released(int x, int y) -> void
   piece_clicked = false;
 }
 
-auto Flower_Board::check_if_empty(int x, int y) -> bool
+auto Flower_Board::field_empty(int x, int y) -> bool
 {
-  for (size_t i = 0; remaining_pieces.flower_size(); i++)
+  for (std::size_t i = 0; remaining_pieces.flower_size(); i++)
   {
-    std::cout << "tutaj " << i << "\n";
     if (remaining_pieces[i] -> pos_x == x && remaining_pieces[i] -> pos_y == y)
     {
       current_piece_to_move = i;
@@ -109,5 +109,8 @@ auto Flower_Board::check_if_empty(int x, int y) -> bool
 
 auto Flower_Board::update_piece_position(int x, int y) -> void
 {
+  remaining_pieces[current_piece_to_move] -> pos_x = x;
+  remaining_pieces[current_piece_to_move] -> pos_y = y;
+  
   remaining_pieces[current_piece_to_move] -> set_position(x, y); 
 }

@@ -30,7 +30,7 @@ int main()
         }
       }
 
-      else if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) 
+      else if (event.type == sf::Event::MouseButtonPressed) 
       {
         board.on_mouse_pressed(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y);
       }
@@ -40,7 +40,7 @@ int main()
         board.on_mouse_moved(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y);  
       }
 
-      else if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left)
+      else if (event.type == sf::Event::MouseButtonReleased)
       {
         board.on_mouse_released(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y);
       } 
