@@ -1,4 +1,5 @@
 #include "../include/Flower_Board.h"
+#include <ios>
 
 Flower_Board::Flower_Board() : square_size{60}
 {
@@ -95,7 +96,7 @@ auto Flower_Board::on_mouse_released(int x, int y) -> void
 
 auto Flower_Board::field_empty(int x, int y) -> bool
 {
-  for (std::size_t i = 0; remaining_pieces.flower_size(); i++)
+  for (std::size_t i = 0; i < remaining_pieces.flower_size(); i++)
   {
     if (remaining_pieces[i] -> pos_x == x && remaining_pieces[i] -> pos_y == y)
     {

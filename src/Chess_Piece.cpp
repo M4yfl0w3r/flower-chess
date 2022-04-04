@@ -147,7 +147,7 @@ auto Rook_Piece::move_valid(int x, int y) -> bool
 
   i = 0;
 
-  while (pos_y - i > 0)
+  while (pos_y - i >= 0)
   {
     valid_positions.insert(std::pair<int, int>(pos_x, pos_y - i));  
     i++;
@@ -163,7 +163,7 @@ auto Rook_Piece::move_valid(int x, int y) -> bool
 
   i = 0;
   
-  while (pos_x - i > 0)
+  while (pos_x - i >= 0)
   {
     valid_positions.insert(std::pair<int, int>(pos_x - i, pos_y));  
     i++;
