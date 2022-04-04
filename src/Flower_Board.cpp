@@ -67,9 +67,12 @@ auto Flower_Board::on_mouse_pressed(int x, int y) -> void
 
   mouse_pressed = true;
  
-  if (!field_empty(mouse_pos_x, mouse_pos_y))
+  if (piece_chosen(mouse_pos_x, mouse_pos_y) <= 32)
   {
-    piece_clicked = true;
+    if (color_to_move == color_chosen)
+    {
+      piece_clicked = true;
+    }
   }
 }
 
@@ -82,10 +85,35 @@ auto Flower_Board::on_mouse_moved(int x, int y) -> void
   {
     if (remaining_pieces[current_piece_to_move] -> move_valid(mouse_pos_x, mouse_pos_y))
     {
-      update_piece_position(mouse_pos_x, mouse_pos_y);
+      if (field_empty(mouse_pos_x, mouse_pos_y))
+      {
+        update_piece_position(mouse_pos_x, mouse_pos_y);
+        check_turn(current_piece_to_move);
+        std::cout << "Now it's " << color_to_move << " turn\n";
+      }
+      /*
+      else 
+      {
+        piece_in_danger = piece_chosen(mouse_pos_x, mouse_pos_y);
+        
+        if (remaining_pieces[current_piece_to_move] -> color != color_to_move)
+        {
+          if (remaining_pieces[current_piece_to_move] -> color != remaining_pieces[piece_in_danger] -> color)
+          {
+            update_piece_position(mouse_pos_x, mouse_pos_y);
+            remaining_pieces.erase(remaining_pieces.begin() + piece_in_danger);
+          }
+        }
+      }
+      */
     }
   }
+}
 
+auto Flower_Board::check_turn(int current_piece_to_move)-> void
+{
+  if (remaining_pieces[current_piece_to_move] -> color == "white") color_to_move = "black";
+  else color_to_move = "white";
 }
 
 auto Flower_Board::on_mouse_released(int x, int y) -> void
@@ -100,12 +128,26 @@ auto Flower_Board::field_empty(int x, int y) -> bool
   {
     if (remaining_pieces[i] -> pos_x == x && remaining_pieces[i] -> pos_y == y)
     {
-      current_piece_to_move = i;
       return false; 
     }
   }
 
   return true;
+}
+
+auto Flower_Board::piece_chosen(int x, int y) -> int
+{
+  for (std::size_t i = 0; i < remaining_pieces.flower_size(); i++)
+  {
+    if (remaining_pieces[i] -> pos_x == x && remaining_pieces[i] -> pos_y == y)
+    {
+      color_chosen = remaining_pieces[i] -> color;
+      // move_count = remaining_pieces[i] -> piece_available_move_count;
+      current_piece_to_move = i;
+    }
+  }
+
+  return current_piece_to_move;
 }
 
 auto Flower_Board::update_piece_position(int x, int y) -> void

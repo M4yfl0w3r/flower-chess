@@ -21,20 +21,26 @@ public:
   int mouse_pos_x = 0;
   int mouse_pos_y = 0;
 
-  std::string color = "white";
-
   bool mouse_pressed = false;
   bool piece_clicked = false;
 
   // index of current clicked piece
-  int current_piece_to_move = 0;
+  int current_piece_to_move = 1000;
+  int piece_in_danger = 1000;
+
+  int move_count = 0;
+
+  std::string color_to_move = "";
+  std::string color_chosen = "";
 
 public:
 	Flower_Board();
 
 public:
+  auto piece_chosen(int, int) -> int;
   auto field_empty(int, int) -> bool;
   auto update_piece_position(int, int) -> void;
+  auto check_turn(int) -> void;
   auto on_mouse_pressed(int, int) -> void;
   auto on_mouse_moved(int, int) -> void;
   auto on_mouse_released(int, int) -> void;

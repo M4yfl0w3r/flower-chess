@@ -11,6 +11,8 @@ int main()
 
   Flower_Board board;
 
+  board.color_to_move = "white";
+
   while (window.isOpen())
   {
     window.clear(sf::Color::White);

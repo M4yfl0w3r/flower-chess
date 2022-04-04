@@ -12,7 +12,9 @@ class Chess_Piece : public sf::Drawable
 public:
   int pos_x = 0;
   int pos_y = 0;
+
   const std::string color = "";
+  int piece_available_move_count = 0;   
 
 protected:
   std::shared_ptr<sf::Texture> piece_texture;

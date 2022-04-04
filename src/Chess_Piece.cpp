@@ -70,6 +70,8 @@ auto King_Piece::move_valid(int x, int y) -> bool
       return true;
     }
   }
+  
+  piece_available_move_count = valid_positions.size();
 
   return false;
 }
@@ -98,6 +100,8 @@ auto Pawn_Piece::move_valid(int x, int y) -> bool
       return true;
     }
   }
+  
+  piece_available_move_count = valid_positions.size();
 
   return false;
 }
@@ -129,6 +133,8 @@ auto Knight_Piece::move_valid(int x, int y) -> bool
       return true;
     }
   }
+  
+  piece_available_move_count = valid_positions.size();
 
   return false;
 }
@@ -180,6 +186,8 @@ auto Rook_Piece::move_valid(int x, int y) -> bool
       return true;
     }
   }
+  
+  piece_available_move_count = valid_positions.size();
 
   return false;
 }
@@ -217,6 +225,8 @@ auto Bishop_Piece::move_valid(int x, int y) -> bool
       return true;
     }
   }
+
+  piece_available_move_count = valid_positions.size();
 
   return false;
 }
@@ -272,6 +282,8 @@ auto Queen_Piece::move_valid(int x, int y) -> bool
       return true;
     }
   }
+  
+  piece_available_move_count = valid_positions.size();
 
   return false;
 }
