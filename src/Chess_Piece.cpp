@@ -1,6 +1,6 @@
 #include "../include/Chess_Piece.h"
 
-Chess_Piece::Chess_Piece(const std::string& filename, int x, int y) : pos_x{x}, pos_y{y}
+Chess_Piece::Chess_Piece(const std::string& filename, int x, int y, const std::string& color) : pos_x{x}, pos_y{y}, color{color}
 {
   piece_texture = std::make_shared<sf::Texture>();
   piece_sprite = std::make_shared<sf::Sprite>();
@@ -26,24 +26,24 @@ auto Chess_Piece::draw(sf::RenderTarget& target, sf::RenderStates states) const 
   target.draw(*piece_sprite);
 }
 
-auto Chess_Piece::move_valid(int x, int y, std::string color) -> bool
+auto Chess_Piece::move_valid(int x, int y) -> bool
 {
   return false;
 }
 
-King_Piece::King_Piece(const std::string& filename, int x, int y) : Chess_Piece(filename, x, y) {}
+King_Piece::King_Piece(const std::string& filename, int x, int y, const std::string& color) : Chess_Piece(filename, x, y, color) {}
 
-Queen_Piece::Queen_Piece(const std::string& filename, int x, int y) : Chess_Piece(filename, x, y) {}
+Queen_Piece::Queen_Piece(const std::string& filename, int x, int y, const std::string& color) : Chess_Piece(filename, x, y, color) {}
 
-Bishop_Piece::Bishop_Piece(const std::string& filename, int x, int y) : Chess_Piece(filename, x, y) {}
+Bishop_Piece::Bishop_Piece(const std::string& filename, int x, int y, const std::string& color) : Chess_Piece(filename, x, y, color) {}
 
-Pawn_Piece::Pawn_Piece(const std::string& filename, int x, int y) : Chess_Piece(filename, x, y) {}
+Pawn_Piece::Pawn_Piece(const std::string& filename, int x, int y, const std::string& color) : Chess_Piece(filename, x, y, color) {}
 
-Rook_Piece::Rook_Piece(const std::string& filename, int x, int y) : Chess_Piece(filename, x, y) {}
+Rook_Piece::Rook_Piece(const std::string& filename, int x, int y, const std::string& color) : Chess_Piece(filename, x, y, color) {}
 
-Knight_Piece::Knight_Piece(const std::string& filename, int x, int y) : Chess_Piece(filename, x, y) {}
+Knight_Piece::Knight_Piece(const std::string& filename, int x, int y, const std::string& color) : Chess_Piece(filename, x, y, color) {}
 
-auto King_Piece::move_valid(int x, int y, std::string color) -> bool
+auto King_Piece::move_valid(int x, int y) -> bool
 {
   std::multimap<int, int> valid_positions;
 
@@ -74,11 +74,18 @@ auto King_Piece::move_valid(int x, int y, std::string color) -> bool
   return false;
 }
 
-auto Pawn_Piece::move_valid(int x, int y, std::string color) -> bool
+auto Pawn_Piece::move_valid(int x, int y) -> bool
 {
   std::multimap<int, int> valid_positions;
 
-  valid_positions.insert(std::pair<int, int>(pos_x, pos_y - 1));
+  if (color == "black")
+  {
+    valid_positions.insert(std::pair<int, int>(pos_x, pos_y + 1));
+  }
+  else if (color == "white")
+  {
+    valid_positions.insert(std::pair<int, int>(pos_x, pos_y - 1));
+  }
 
   typedef std::multimap<int, int>::iterator map_iterator;
 
@@ -95,7 +102,7 @@ auto Pawn_Piece::move_valid(int x, int y, std::string color) -> bool
   return false;
 }
 
-auto Knight_Piece::move_valid(int x, int y, std::string color) -> bool
+auto Knight_Piece::move_valid(int x, int y) -> bool
 {
   std::multimap<int, int> valid_positions;
 
@@ -126,7 +133,7 @@ auto Knight_Piece::move_valid(int x, int y, std::string color) -> bool
   return false;
 }
 
-auto Rook_Piece::move_valid(int x, int y, std::string color) -> bool
+auto Rook_Piece::move_valid(int x, int y) -> bool
 {
   std::multimap<int, int> valid_positions;
 
@@ -177,7 +184,7 @@ auto Rook_Piece::move_valid(int x, int y, std::string color) -> bool
   return false;
 }
 
-auto Bishop_Piece::move_valid(int x, int y, std::string color) -> bool
+auto Bishop_Piece::move_valid(int x, int y) -> bool
 {
   std::multimap<int, int> valid_positions;
 
@@ -214,7 +221,7 @@ auto Bishop_Piece::move_valid(int x, int y, std::string color) -> bool
   return false;
 }
 
-auto Queen_Piece::move_valid(int x, int y, std::string color) -> bool
+auto Queen_Piece::move_valid(int x, int y) -> bool
 {
   std::multimap<int, int> valid_positions;
 
@@ -230,7 +237,7 @@ auto Queen_Piece::move_valid(int x, int y, std::string color) -> bool
 
   i = 0;
 
-  while (pos_x - i > 0)
+  while (pos_x - i >= 0)
   {
     valid_positions.insert(std::pair<int, int>(pos_x - i, pos_y - i));  
     valid_positions.insert(std::pair<int, int>(pos_x - i, pos_y + i));  
@@ -248,7 +255,7 @@ auto Queen_Piece::move_valid(int x, int y, std::string color) -> bool
 
   i = 0;
 
-  while (pos_y - i > 0)
+  while (pos_y - i >= 0)
   {
     valid_positions.insert(std::pair<int, int>(pos_x, pos_y - i));  
     i++;
