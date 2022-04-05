@@ -67,7 +67,7 @@ auto Flower_Board::on_mouse_pressed(int x, int y) -> void
 
   mouse_pressed = true;
  
-  if (piece_chosen(mouse_pos_x, mouse_pos_y) <= 32)
+  if (piece_chosen(&current_piece_to_move, mouse_pos_x, mouse_pos_y) <= 32)
   {
     if (color_to_move == color_chosen)
     {
@@ -87,39 +87,37 @@ auto Flower_Board::on_mouse_moved(int x, int y) -> void
     {
       if (field_empty(mouse_pos_x, mouse_pos_y))
       {
+        // x_update = mouse_pos_x;
+        // y_update = mouse_pos_y;
         update_piece_position(mouse_pos_x, mouse_pos_y);
         check_turn(current_piece_to_move);
-        std::cout << "Now it's " << color_to_move << " turn\n";
       }
-      /*
-      else 
+      else if (!field_empty(mouse_pos_x, mouse_pos_y))
       {
-        piece_in_danger = piece_chosen(mouse_pos_x, mouse_pos_y);
-        
-        if (remaining_pieces[current_piece_to_move] -> color != color_to_move)
+        piece_in_danger = piece_chosen(&piece_in_danger, mouse_pos_x, mouse_pos_y);
+
+        if (remaining_pieces[current_piece_to_move] -> color != remaining_pieces[piece_in_danger] -> color)
         {
-          if (remaining_pieces[current_piece_to_move] -> color != remaining_pieces[piece_in_danger] -> color)
-          {
-            update_piece_position(mouse_pos_x, mouse_pos_y);
-            remaining_pieces.erase(remaining_pieces.begin() + piece_in_danger);
-          }
+          update_piece_position(mouse_pos_x, mouse_pos_y);
+          remaining_pieces.erase(remaining_pieces.begin() + piece_in_danger);
         }
       }
-      */
     }
   }
-}
-
-auto Flower_Board::check_turn(int current_piece_to_move)-> void
-{
-  if (remaining_pieces[current_piece_to_move] -> color == "white") color_to_move = "black";
-  else color_to_move = "white";
 }
 
 auto Flower_Board::on_mouse_released(int x, int y) -> void
 {
   mouse_pressed = false;
   piece_clicked = false;
+
+  // update_piece_position(x_update, y_update);
+}
+
+auto Flower_Board::check_turn(int current_piece_to_move)-> void
+{
+  if (remaining_pieces[current_piece_to_move] -> color == "white") color_to_move = "black";
+  else color_to_move = "white";
 }
 
 auto Flower_Board::field_empty(int x, int y) -> bool
@@ -135,7 +133,7 @@ auto Flower_Board::field_empty(int x, int y) -> bool
   return true;
 }
 
-auto Flower_Board::piece_chosen(int x, int y) -> int
+auto Flower_Board::piece_chosen(int* piece, int x, int y) -> int
 {
   for (std::size_t i = 0; i < remaining_pieces.flower_size(); i++)
   {
@@ -143,11 +141,11 @@ auto Flower_Board::piece_chosen(int x, int y) -> int
     {
       color_chosen = remaining_pieces[i] -> color;
       // move_count = remaining_pieces[i] -> piece_available_move_count;
-      current_piece_to_move = i;
+      *piece = i;
     }
   }
 
-  return current_piece_to_move;
+  return *piece;
 }
 
 auto Flower_Board::update_piece_position(int x, int y) -> void

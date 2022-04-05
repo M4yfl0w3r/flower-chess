@@ -33,11 +33,14 @@ public:
   std::string color_to_move = "";
   std::string color_chosen = "";
 
+  int x_update = 0;
+  int y_update = 0;
+
 public:
 	Flower_Board();
 
 public:
-  auto piece_chosen(int, int) -> int;
+  auto piece_chosen(int*, int, int) -> int;
   auto field_empty(int, int) -> bool;
   auto update_piece_position(int, int) -> void;
   auto check_turn(int) -> void;
