@@ -1,5 +1,4 @@
 #include "../include/Flower_Board.h"
-#include <ios>
 
 Flower_Board::Flower_Board() : square_size{60}
 {
@@ -103,6 +102,7 @@ auto Flower_Board::on_mouse_released(int x, int y) -> void
   }
   else if (!field_empty(x_update, y_update))
   {
+    // Piece to be captured
     piece_in_danger = piece_chosen(&piece_in_danger, x_update, y_update);
 
     // Check if the pieces have different colors
@@ -141,7 +141,6 @@ auto Flower_Board::piece_chosen(int* piece, int x, int y) -> int
     if (remaining_pieces[i] -> pos_x == x && remaining_pieces[i] -> pos_y == y)
     {
       color_chosen = remaining_pieces[i] -> color;
-      // move_count = remaining_pieces[i] -> piece_available_move_count;
       *piece = i;
     }
   }

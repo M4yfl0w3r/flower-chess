@@ -70,8 +70,6 @@ auto King_Piece::move_valid(int x, int y) -> bool
       return true;
     }
   }
-  
-  piece_available_move_count = valid_positions.size();
 
   return false;
 }
@@ -83,10 +81,18 @@ auto Pawn_Piece::move_valid(int x, int y) -> bool
   if (color == "black")
   {
     valid_positions.insert(std::pair<int, int>(pos_x, pos_y + 1));
+    if (x == pos_x && y == (pos_y + 2))
+    {
+      valid_positions.insert(std::pair<int, int>(pos_x, pos_y + 2));
+    }
   }
   else if (color == "white")
   {
     valid_positions.insert(std::pair<int, int>(pos_x, pos_y - 1));
+    if (x == pos_x && y == (pos_y - 2))
+    {
+      valid_positions.insert(std::pair<int, int>(pos_x, pos_y - 2));
+    }
   }
 
   typedef std::multimap<int, int>::iterator map_iterator;
@@ -100,8 +106,6 @@ auto Pawn_Piece::move_valid(int x, int y) -> bool
       return true;
     }
   }
-  
-  piece_available_move_count = valid_positions.size();
 
   return false;
 }
@@ -133,8 +137,6 @@ auto Knight_Piece::move_valid(int x, int y) -> bool
       return true;
     }
   }
-  
-  piece_available_move_count = valid_positions.size();
 
   return false;
 }
@@ -186,8 +188,6 @@ auto Rook_Piece::move_valid(int x, int y) -> bool
       return true;
     }
   }
-  
-  piece_available_move_count = valid_positions.size();
 
   return false;
 }
@@ -225,8 +225,6 @@ auto Bishop_Piece::move_valid(int x, int y) -> bool
       return true;
     }
   }
-
-  piece_available_move_count = valid_positions.size();
 
   return false;
 }
@@ -282,8 +280,6 @@ auto Queen_Piece::move_valid(int x, int y) -> bool
       return true;
     }
   }
-  
-  piece_available_move_count = valid_positions.size();
 
   return false;
 }

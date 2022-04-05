@@ -26,9 +26,9 @@ public:
 
   // index of current clicked piece
   int current_piece_to_move = 1000;
-  int piece_in_danger = 1000;
 
-  int move_count = 0;
+  // index of piece to be captured
+  int piece_in_danger = 1000;
 
   std::string color_to_move = "";
   std::string color_chosen = "";
