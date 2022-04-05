@@ -85,23 +85,8 @@ auto Flower_Board::on_mouse_moved(int x, int y) -> void
   {
     if (remaining_pieces[current_piece_to_move] -> move_valid(mouse_pos_x, mouse_pos_y))
     {
-      if (field_empty(mouse_pos_x, mouse_pos_y))
-      {
-        // x_update = mouse_pos_x;
-        // y_update = mouse_pos_y;
-        update_piece_position(mouse_pos_x, mouse_pos_y);
-        check_turn(current_piece_to_move);
-      }
-      else if (!field_empty(mouse_pos_x, mouse_pos_y))
-      {
-        piece_in_danger = piece_chosen(&piece_in_danger, mouse_pos_x, mouse_pos_y);
-
-        if (remaining_pieces[current_piece_to_move] -> color != remaining_pieces[piece_in_danger] -> color)
-        {
-          update_piece_position(mouse_pos_x, mouse_pos_y);
-          remaining_pieces.erase(remaining_pieces.begin() + piece_in_danger);
-        }
-      }
+      x_update = mouse_pos_x;
+      y_update = mouse_pos_y; 
     }
   }
 }
@@ -110,8 +95,24 @@ auto Flower_Board::on_mouse_released(int x, int y) -> void
 {
   mouse_pressed = false;
   piece_clicked = false;
+      
+  if (field_empty(x_update, y_update))
+  {
+    update_piece_position(x_update, y_update);
+    check_turn(current_piece_to_move);
+  }
+  else if (!field_empty(x_update, y_update))
+  {
+    piece_in_danger = piece_chosen(&piece_in_danger, x_update, y_update);
 
-  // update_piece_position(x_update, y_update);
+    // Check if the pieces have different colors
+    if (remaining_pieces[current_piece_to_move] -> color != remaining_pieces[piece_in_danger] -> color)
+    {
+      update_piece_position(x_update, y_update);
+      remaining_pieces.erase(remaining_pieces.begin() + piece_in_danger);
+      check_turn(current_piece_to_move);
+    }
+  }
 }
 
 auto Flower_Board::check_turn(int current_piece_to_move)-> void
