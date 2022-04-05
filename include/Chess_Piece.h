@@ -14,13 +14,14 @@ public:
   int pos_y = 0;
 
   const std::string color = "";
+  const std::string name = "";
 
 protected:
   std::shared_ptr<sf::Texture> piece_texture;
   std::shared_ptr<sf::Sprite> piece_sprite;
 
 public:
-	Chess_Piece(const std::string&, int, int, const std::string&);
+	Chess_Piece(const std::string&, int, int, const std::string&, const std::string&);
 
   auto virtual draw(sf::RenderTarget&, sf::RenderStates) const -> void override;
   auto virtual move_valid(int, int) -> bool;
@@ -35,7 +36,7 @@ class King_Piece : public Chess_Piece
 {
 
 public:
-  King_Piece(const std::string&, int, int, const std::string&);
+  King_Piece(const std::string&, int, int, const std::string&, const std::string&);
 
   auto move_valid(int, int) -> bool override;
 };

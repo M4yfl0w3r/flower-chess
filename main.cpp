@@ -48,6 +48,11 @@ int main()
       } 
     } 
 
+    if (board.lost)
+    {
+      window.close();
+    }
+
     window.draw(board);
  
     window.display();

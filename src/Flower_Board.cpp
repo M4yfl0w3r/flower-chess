@@ -20,8 +20,8 @@ Flower_Board::Flower_Board() : square_size{60}
   remaining_pieces.flower_push_back(new Queen_Piece("b_queen.png", 3, 0, "black"));
   remaining_pieces.flower_push_back(new Queen_Piece("w_queen.png", 3, 7, "white"));
   
-  remaining_pieces.flower_push_back(new King_Piece("b_king.png", 4, 0, "black"));
-  remaining_pieces.flower_push_back(new King_Piece("w_king.png", 4, 7, "white"));
+  remaining_pieces.flower_push_back(new King_Piece("b_king.png", 4, 0, "black", "king"));
+  remaining_pieces.flower_push_back(new King_Piece("w_king.png", 4, 7, "white", "king"));
 
   for (int i = 0; i < 8; i++)
     remaining_pieces.flower_push_back(new Pawn_Piece("w_pawn.png", i, 6, "white"));
@@ -104,6 +104,13 @@ auto Flower_Board::on_mouse_released(int x, int y) -> void
   {
     // Piece to be captured
     piece_in_danger = piece_chosen(&piece_in_danger, x_update, y_update);
+
+    if (remaining_pieces[piece_in_danger] -> name == "king")
+    {
+      std::cout << color_to_move << " won!\n";
+      lost = true;
+      return;
+    }
 
     // Check if the pieces have different colors
     if (remaining_pieces[current_piece_to_move] -> color != remaining_pieces[piece_in_danger] -> color)

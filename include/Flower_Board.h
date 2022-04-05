@@ -36,6 +36,8 @@ public:
   int x_update = 0;
   int y_update = 0;
 
+  bool lost = false;
+
 public:
 	Flower_Board();
 

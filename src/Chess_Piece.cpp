@@ -1,6 +1,6 @@
 #include "../include/Chess_Piece.h"
 
-Chess_Piece::Chess_Piece(const std::string& filename, int x, int y, const std::string& color) : pos_x{x}, pos_y{y}, color{color}
+Chess_Piece::Chess_Piece(const std::string& filename, int x, int y, const std::string& color, const std::string& name = "") : pos_x{x}, pos_y{y}, color{color}, name{name}
 {
   piece_texture = std::make_shared<sf::Texture>();
   piece_sprite = std::make_shared<sf::Sprite>();
@@ -31,7 +31,7 @@ auto Chess_Piece::move_valid(int x, int y) -> bool
   return false;
 }
 
-King_Piece::King_Piece(const std::string& filename, int x, int y, const std::string& color) : Chess_Piece(filename, x, y, color) {}
+King_Piece::King_Piece(const std::string& filename, int x, int y, const std::string& color, const std::string& name) : Chess_Piece(filename, x, y, color, name) {}
 
 Queen_Piece::Queen_Piece(const std::string& filename, int x, int y, const std::string& color) : Chess_Piece(filename, x, y, color) {}
 
