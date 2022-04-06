@@ -44,7 +44,7 @@ int main()
 
       else if (event.type == sf::Event::MouseButtonReleased)
       {
-        board.on_mouse_released(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y);
+        board.on_mouse_released();
       } 
     } 
 
@@ -60,3 +60,4 @@ int main()
 
   return 0;
 }
+

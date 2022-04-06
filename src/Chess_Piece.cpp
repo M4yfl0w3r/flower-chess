@@ -1,11 +1,12 @@
 #include "../include/Chess_Piece.h"
+#include <SFML/Graphics/Shader.hpp>
 
 Chess_Piece::Chess_Piece(const std::string& filename, int x, int y, const std::string& color, const std::string& name = "") : pos_x{x}, pos_y{y}, color{color}, name{name}
 {
   piece_texture = std::make_shared<sf::Texture>();
   piece_sprite = std::make_shared<sf::Sprite>();
 
-  std::string path = "/home/hope/Code/flower-chess/images/";
+  std::string path = "../images/";
   load_texture(path.append(filename));
   set_position(pos_x, pos_y);
 }
@@ -283,9 +284,4 @@ auto Queen_Piece::move_valid(int x, int y) -> bool
 
   return false;
 }
-
-
-
-
-
 

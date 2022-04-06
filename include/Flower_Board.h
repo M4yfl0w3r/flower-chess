@@ -45,12 +45,13 @@ public:
   auto piece_chosen(int*, int, int) -> int;
   auto field_empty(int, int) -> bool;
   auto update_piece_position(int, int) -> void;
-  auto check_turn(int) -> void;
+  auto change_turn(int) -> void;
   auto on_mouse_pressed(int, int) -> void;
   auto on_mouse_moved(int, int) -> void;
-  auto on_mouse_released(int, int) -> void;
+  auto on_mouse_released() -> void;
 
 private:
 	auto draw(sf::RenderTarget&, sf::RenderStates) const -> void override;
 
 };
+

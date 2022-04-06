@@ -24,7 +24,7 @@ public:
 	Chess_Piece(const std::string&, int, int, const std::string&, const std::string&);
 
   auto virtual draw(sf::RenderTarget&, sf::RenderStates) const -> void override;
-  auto virtual move_valid(int, int) -> bool;
+  auto virtual move_valid(int x, int y) -> bool;
 
 public:
   auto load_texture(const std::string&) -> void;

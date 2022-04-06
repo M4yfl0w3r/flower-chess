@@ -90,7 +90,7 @@ auto Flower_Board::on_mouse_moved(int x, int y) -> void
   }
 }
 
-auto Flower_Board::on_mouse_released(int x, int y) -> void
+auto Flower_Board::on_mouse_released() -> void
 {
   mouse_pressed = false;
   piece_clicked = false;
@@ -98,8 +98,9 @@ auto Flower_Board::on_mouse_released(int x, int y) -> void
   if (field_empty(x_update, y_update))
   {
     update_piece_position(x_update, y_update);
-    check_turn(current_piece_to_move);
+    change_turn(current_piece_to_move);
   }
+
   else if (!field_empty(x_update, y_update))
   {
     // Piece to be captured
@@ -117,12 +118,12 @@ auto Flower_Board::on_mouse_released(int x, int y) -> void
     {
       update_piece_position(x_update, y_update);
       remaining_pieces.erase(remaining_pieces.begin() + piece_in_danger);
-      check_turn(current_piece_to_move);
+      change_turn(current_piece_to_move);
     }
   }
 }
 
-auto Flower_Board::check_turn(int current_piece_to_move)-> void
+auto Flower_Board::change_turn(int current_piece_to_move)-> void
 {
   if (remaining_pieces[current_piece_to_move] -> color == "white") color_to_move = "black";
   else color_to_move = "white";
@@ -162,3 +163,4 @@ auto Flower_Board::update_piece_position(int x, int y) -> void
   
   remaining_pieces[current_piece_to_move] -> set_position(x, y); 
 }
+
