@@ -1,5 +1,4 @@
 #include "../include/flower_vector.h"
-#include <pthread.h>
 
 template <typename T>
 Flower_Vector<T>::Flower_Vector() 
@@ -196,7 +195,7 @@ void Flower_Vector<T>::flower_push_back(T&& value)
     flower_realloc(capacity + capacity);
   }
  
-  //flower_buffer[size++] = std::move(value);
+  // flower_buffer[size++] = std::move(value);
   flower_buffer[size++] = static_cast<T&&>(value);
 }
   
