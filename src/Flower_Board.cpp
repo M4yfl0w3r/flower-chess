@@ -1,6 +1,6 @@
 #include "../include/Flower_Board.h"
 
-Flower_Board::Flower_Board() : square_size{60}
+Flower_Board::Flower_Board() 
 {
   remaining_pieces.flower_push_back(new Rook_Piece("b_rook.png", 0, 0, "white"));
   remaining_pieces.flower_push_back(new Rook_Piece("w_rook.png", 0, 7, "black"));

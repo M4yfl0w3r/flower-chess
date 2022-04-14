@@ -10,11 +10,14 @@ class Chess_Piece : public sf::Drawable
 {	
 
 public:
-  int pos_x = 0;
-  int pos_y = 0;
 
-  const std::string color = "";
-  const std::string name = "";
+  int 
+    pos_x = 0,
+    pos_y = 0;
+
+  const std::string 
+    color = "",
+    name = "";
 
 protected:
   std::shared_ptr<sf::Texture> piece_texture;
@@ -29,7 +32,6 @@ public:
 public:
   auto load_texture(const std::string&) -> void;
   auto set_position(int, int) -> void;
-
 };
 
 class King_Piece : public Chess_Piece
