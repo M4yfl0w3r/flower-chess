@@ -1,7 +1,5 @@
 #pragma once
 
-#include <iostream>
-
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Drawable.hpp>
@@ -13,7 +11,7 @@
 
 class Flower_Board : public sf::Drawable
 {
-	inline static int square_size = 60;
+	inline static const int square_size = 60;
   
   Flower_Vector<Chess_Piece*> remaining_pieces; 
 

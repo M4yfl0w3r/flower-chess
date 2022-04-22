@@ -10,7 +10,6 @@ class Chess_Piece : public sf::Drawable
 {	
 
 public:
-
   int 
     pos_x = 0,
     pos_y = 0;

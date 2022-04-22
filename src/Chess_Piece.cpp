@@ -1,5 +1,4 @@
 #include "../include/Chess_Piece.h"
-#include <SFML/Graphics/Shader.hpp>
 
 Chess_Piece::Chess_Piece(const std::string& filename, int x, int y, const std::string& color, const std::string& name = "") : pos_x{x}, pos_y{y}, color{color}, name{name}
 {
