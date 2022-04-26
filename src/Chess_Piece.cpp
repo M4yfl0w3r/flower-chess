@@ -26,7 +26,7 @@ auto Chess_Piece::draw(sf::RenderTarget& target, sf::RenderStates states) const 
   target.draw(*piece_sprite);
 }
 
-auto Chess_Piece::move_valid(int x, int y) -> bool
+[[maybe_unused]] auto Chess_Piece::move_valid(int x, int y) -> bool
 {
   return false;
 }
