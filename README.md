@@ -64,7 +64,6 @@
 - add pawn capturing 
 - change pawn to other piece 
 - king have to be captured to win a game
-- get rid of include cpp file
 
 
 

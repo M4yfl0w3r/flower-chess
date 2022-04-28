@@ -5,7 +5,6 @@
 #include <SFML/Graphics/Drawable.hpp>
 
 #include "Chess_Piece.h"
-
 #include "flower_vector.h"
 #include "../src/flower_vector.cpp"
 

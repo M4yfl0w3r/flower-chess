@@ -1,9 +1,6 @@
 #include "include/Flower_Board.h"
 #include "include/Chess_Piece.h"
 
-#include "src/Flower_Board.cpp"
-#include "src/Chess_Piece.cpp"
-
 int main()
 {
   sf::RenderWindow window(sf::VideoMode(480, 480), "Chess", sf::Style::Titlebar | sf::Style::Close);

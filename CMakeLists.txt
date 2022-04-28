@@ -8,6 +8,8 @@ set(CMAKE_COLOR_MAKEFILE ON)
 set(CMAKE_CXX_FLAGS "-Wall")
 
 include_directories(include/, /usr/include/SFML)
-add_executable(flower-chess main.cpp)
+file(GLOB SOURCES ${PROJECT_SOURCE_DIR}/src/*.cpp)
+
+add_executable(${PROJECT_NAME} main.cpp ${SOURCES})
 target_link_libraries(flower-chess sfml-graphics sfml-window sfml-system)
 
