@@ -1,5 +1,5 @@
-#include "include/Flower_Board.h"
-#include "include/Chess_Piece.h"
+#include "../include/Flower_Board.h"
+#include "../include/Chess_Piece.h"
 
 int main()
 {
