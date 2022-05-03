@@ -24,8 +24,9 @@ public:
     x_update = 0,
     y_update = 0;
 
-  bool 
+  inline static bool 
     mouse_pressed = false,
+    to_capture = false,
     piece_clicked = false,
     lost = false;
 
@@ -43,7 +44,7 @@ public:
 
 private:
   auto piece_chosen(int*, int, int) -> int;
-  auto field_empty(int, int) -> bool;
+  auto field_empty(int, int) const -> bool;
   auto update_piece_position(int, int) -> void;
   auto change_turn(int) -> void;
 

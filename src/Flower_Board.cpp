@@ -34,7 +34,7 @@ auto Flower_Board::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	sf::RectangleShape rect;	
 
-	auto colors = std::make_tuple(sf::Color (234,182,118), sf::Color (153, 76, 0));
+	auto colors = std::make_tuple(sf::Color (234, 182, 118), sf::Color (153, 76, 0));
 
 	for (int i = 0; i < 8; i++) 
 	{
@@ -96,14 +96,15 @@ auto Flower_Board::on_mouse_released() -> void
   piece_clicked = false;
       
   if (field_empty(x_update, y_update))
-  {
+  { 
     update_piece_position(x_update, y_update);
     change_turn(current_piece_to_move);
   }
 
   else if (!field_empty(x_update, y_update))
   {
-    // Piece to be captured
+    to_capture = true;
+    
     piece_in_danger = piece_chosen(&piece_in_danger, x_update, y_update);
 
     if (remaining_pieces[piece_in_danger] -> name == "king")
@@ -113,7 +114,6 @@ auto Flower_Board::on_mouse_released() -> void
       return;
     }
 
-    // Check if the pieces have different colors
     if (remaining_pieces[current_piece_to_move] -> color != remaining_pieces[piece_in_danger] -> color)
     {
       update_piece_position(x_update, y_update);
@@ -129,7 +129,7 @@ auto Flower_Board::change_turn(int current_piece_to_move)-> void
   else color_to_move = "white";
 }
 
-auto Flower_Board::field_empty(int x, int y) -> bool
+auto Flower_Board::field_empty(int x, int y) const -> bool
 {
   for (std::size_t i = 0; i < remaining_pieces.flower_size(); i++)
   {
@@ -160,7 +160,8 @@ auto Flower_Board::update_piece_position(int x, int y) -> void
 {
   remaining_pieces[current_piece_to_move] -> pos_x = x;
   remaining_pieces[current_piece_to_move] -> pos_y = y;
-  
+
   remaining_pieces[current_piece_to_move] -> set_position(x, y); 
+  to_capture = false;
 }
 

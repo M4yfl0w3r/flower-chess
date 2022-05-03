@@ -25,6 +25,8 @@ if (NOT SFML_POPULATED)
   endif()
 endif()
 
+add_compile_options(${CMAKE_CXX_FLAGS})
+
 set(SOURCE 
   src/main.cpp
   src/Chess_Piece.cpp

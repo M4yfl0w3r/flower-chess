@@ -8,11 +8,15 @@
 
 class Chess_Piece : public sf::Drawable
 {	
+  friend class Flower_Board;
 
 public:
   int 
     pos_x = 0,
     pos_y = 0;
+
+  inline static bool 
+    to_capture = false;
 
   const std::string 
     color = "",
@@ -69,6 +73,7 @@ public:
   Pawn_Piece(const std::string&, int, int, const std::string&); 
 
   auto move_valid(int, int) -> bool override;
+  auto move_valid_capture(int, int) -> bool;
 };
 
 

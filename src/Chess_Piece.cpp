@@ -1,4 +1,5 @@
 #include "../include/Chess_Piece.h"
+#include "../include/Flower_Board.h"
 
 Chess_Piece::Chess_Piece(const std::string& filename, int x, int y, const std::string& color, const std::string& name = "") : pos_x{x}, pos_y{y}, color{color}, name{name}
 {
@@ -80,21 +81,30 @@ auto Pawn_Piece::move_valid(int x, int y) -> bool
 
   if (color == "black")
   {
+    valid_positions.insert(std::pair<int, int>(pos_x - 1 , pos_y + 1));
+    valid_positions.insert(std::pair<int, int>(pos_x + 1 , pos_y + 1));  
+  
     valid_positions.insert(std::pair<int, int>(pos_x, pos_y + 1));
+
     if (x == pos_x && y == (pos_y + 2))
     {
       valid_positions.insert(std::pair<int, int>(pos_x, pos_y + 2));
     }
   }
+
   else if (color == "white")
   {
+    valid_positions.insert(std::pair<int, int>(pos_x - 1 , pos_y - 1));
+    valid_positions.insert(std::pair<int, int>(pos_x + 1 , pos_y - 1)); 
+ 
     valid_positions.insert(std::pair<int, int>(pos_x, pos_y - 1));
+
     if (x == pos_x && y == (pos_y - 2))
     {
       valid_positions.insert(std::pair<int, int>(pos_x, pos_y - 2));
     }
   }
-
+ 
   typedef std::multimap<int, int>::iterator map_iterator;
 
   std::pair<map_iterator, map_iterator> result = valid_positions.equal_range(x);
