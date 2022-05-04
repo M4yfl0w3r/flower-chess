@@ -27,7 +27,7 @@ auto Chess_Piece::draw(sf::RenderTarget& target, sf::RenderStates states) const 
   target.draw(*piece_sprite);
 }
 
-[[maybe_unused]] auto Chess_Piece::move_valid(int x, int y) -> bool
+[[maybe_unused]] auto Chess_Piece::move_valid(int x, int y, bool is_field_empty) -> bool
 {
   return false;
 }
@@ -44,7 +44,7 @@ Rook_Piece::Rook_Piece(const std::string& filename, int x, int y, const std::str
 
 Knight_Piece::Knight_Piece(const std::string& filename, int x, int y, const std::string& color) : Chess_Piece(filename, x, y, color) {}
 
-auto King_Piece::move_valid(int x, int y) -> bool
+auto King_Piece::move_valid(int x, int y, bool is_field_empty) -> bool
 {
   std::multimap<int, int> valid_positions;
 
@@ -75,33 +75,42 @@ auto King_Piece::move_valid(int x, int y) -> bool
   return false;
 }
 
-auto Pawn_Piece::move_valid(int x, int y) -> bool
+auto Pawn_Piece::move_valid(int x, int y, bool is_field_empty) -> bool
 {
   std::multimap<int, int> valid_positions;
 
-  if (color == "black")
+  if (is_field_empty)
   {
-    valid_positions.insert(std::pair<int, int>(pos_x - 1 , pos_y + 1));
-    valid_positions.insert(std::pair<int, int>(pos_x + 1 , pos_y + 1));  
-  
-    valid_positions.insert(std::pair<int, int>(pos_x, pos_y + 1));
-
-    if (x == pos_x && y == (pos_y + 2))
+    if (color == "black")
     {
-      valid_positions.insert(std::pair<int, int>(pos_x, pos_y + 2));
+      valid_positions.insert(std::pair<int, int>(pos_x, pos_y + 1));
+
+      if (x == pos_x && y == (pos_y + 2))
+      {
+        valid_positions.insert(std::pair<int, int>(pos_x, pos_y + 2));
+      }
+    }
+    else if (color == "white")
+    {
+      valid_positions.insert(std::pair<int, int>(pos_x, pos_y - 1));
+
+      if (x == pos_x && y == (pos_y - 2))
+      {
+        valid_positions.insert(std::pair<int, int>(pos_x, pos_y - 2));
+      }
     }
   }
-
-  else if (color == "white")
+  else
   {
-    valid_positions.insert(std::pair<int, int>(pos_x - 1 , pos_y - 1));
-    valid_positions.insert(std::pair<int, int>(pos_x + 1 , pos_y - 1)); 
- 
-    valid_positions.insert(std::pair<int, int>(pos_x, pos_y - 1));
-
-    if (x == pos_x && y == (pos_y - 2))
+    if (color == "black")
     {
-      valid_positions.insert(std::pair<int, int>(pos_x, pos_y - 2));
+      valid_positions.insert(std::pair<int, int>(pos_x - 1 , pos_y + 1));
+      valid_positions.insert(std::pair<int, int>(pos_x + 1 , pos_y + 1));   
+    }
+    else if (color == "white")
+    {
+      valid_positions.insert(std::pair<int, int>(pos_x - 1 , pos_y - 1));
+      valid_positions.insert(std::pair<int, int>(pos_x + 1 , pos_y - 1));  
     }
   }
  
@@ -120,7 +129,7 @@ auto Pawn_Piece::move_valid(int x, int y) -> bool
   return false;
 }
 
-auto Knight_Piece::move_valid(int x, int y) -> bool
+auto Knight_Piece::move_valid(int x, int y, bool is_field_empty) -> bool
 {
   std::multimap<int, int> valid_positions;
 
@@ -151,7 +160,7 @@ auto Knight_Piece::move_valid(int x, int y) -> bool
   return false;
 }
 
-auto Rook_Piece::move_valid(int x, int y) -> bool
+auto Rook_Piece::move_valid(int x, int y, bool is_field_empty) -> bool
 {
   std::multimap<int, int> valid_positions;
 
@@ -202,7 +211,7 @@ auto Rook_Piece::move_valid(int x, int y) -> bool
   return false;
 }
 
-auto Bishop_Piece::move_valid(int x, int y) -> bool
+auto Bishop_Piece::move_valid(int x, int y, bool is_field_empty) -> bool
 {
   std::multimap<int, int> valid_positions;
 
@@ -239,7 +248,7 @@ auto Bishop_Piece::move_valid(int x, int y) -> bool
   return false;
 }
 
-auto Queen_Piece::move_valid(int x, int y) -> bool
+auto Queen_Piece::move_valid(int x, int y, bool is_field_empty) -> bool
 {
   std::multimap<int, int> valid_positions;
 

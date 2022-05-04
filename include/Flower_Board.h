@@ -15,7 +15,6 @@ class Flower_Board : public sf::Drawable
   Flower_Vector<Chess_Piece*> remaining_pieces; 
 
 public:
-
   int 
     mouse_pos_x = 0,
     mouse_pos_y = 0,

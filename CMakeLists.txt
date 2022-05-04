@@ -5,6 +5,7 @@ project(flower_chess)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS "-Wall")
+add_compile_options(${CMAKE_CXX_FLAGS})
 
 include(FetchContent)
 
@@ -25,7 +26,6 @@ if (NOT SFML_POPULATED)
   endif()
 endif()
 
-add_compile_options(${CMAKE_CXX_FLAGS})
 
 set(SOURCE 
   src/main.cpp

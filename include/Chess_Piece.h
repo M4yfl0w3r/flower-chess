@@ -30,7 +30,7 @@ public:
 	Chess_Piece(const std::string&, int, int, const std::string&, const std::string&);
 
   auto virtual draw(sf::RenderTarget&, sf::RenderStates) const -> void override;
-  auto virtual move_valid(int x, int y) -> bool;
+  auto virtual move_valid(int, int, bool) -> bool;
 
 public:
   auto load_texture(const std::string&) -> void;
@@ -43,7 +43,7 @@ class King_Piece : public Chess_Piece
 public:
   King_Piece(const std::string&, int, int, const std::string&, const std::string&);
 
-  auto move_valid(int, int) -> bool override;
+  auto move_valid(int, int, bool) -> bool override;
 };
 
 
@@ -53,7 +53,7 @@ class Queen_Piece: public Chess_Piece
 public:
   Queen_Piece(const std::string&, int, int, const std::string&);
   
-  auto move_valid(int, int) -> bool override;
+  auto move_valid(int, int, bool) -> bool override;
 };
 
 
@@ -63,7 +63,7 @@ class Bishop_Piece : public Chess_Piece
 public:
   Bishop_Piece(const std::string&, int, int, const std::string&); 
   
-  auto move_valid(int, int) -> bool override;
+  auto move_valid(int, int, bool) -> bool override;
 };
 
 class Pawn_Piece : public Chess_Piece
@@ -72,7 +72,7 @@ class Pawn_Piece : public Chess_Piece
 public:
   Pawn_Piece(const std::string&, int, int, const std::string&); 
 
-  auto move_valid(int, int) -> bool override;
+  auto move_valid(int, int, bool) -> bool override;
   auto move_valid_capture(int, int) -> bool;
 };
 
@@ -83,7 +83,7 @@ class Rook_Piece : public Chess_Piece
 public:
   Rook_Piece(const std::string&, int, int, const std::string&); 
 
-  auto move_valid(int, int) -> bool override;
+  auto move_valid(int, int, bool) -> bool override;
 };
 
 class Knight_Piece : public Chess_Piece
@@ -92,6 +92,6 @@ class Knight_Piece : public Chess_Piece
 public:
   Knight_Piece(const std::string&, int, int, const std::string&); 
 
-  auto move_valid(int, int) -> bool override;
+  auto move_valid(int, int, bool) -> bool override;
 };
 

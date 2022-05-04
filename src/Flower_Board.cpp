@@ -82,7 +82,7 @@ auto Flower_Board::on_mouse_moved(int x, int y) -> void
 
   if (mouse_pressed && piece_clicked) 
   {
-    if (remaining_pieces[current_piece_to_move] -> move_valid(mouse_pos_x, mouse_pos_y))
+    if (remaining_pieces[current_piece_to_move] -> move_valid(mouse_pos_x, mouse_pos_y, field_empty(mouse_pos_x, mouse_pos_y)))
     {
       x_update = mouse_pos_x;
       y_update = mouse_pos_y; 
@@ -123,7 +123,7 @@ auto Flower_Board::on_mouse_released() -> void
   }
 }
 
-auto Flower_Board::change_turn(int current_piece_to_move)-> void
+auto Flower_Board::change_turn(int current_piece_to_move) -> void
 {
   if (remaining_pieces[current_piece_to_move] -> color == "white") color_to_move = "black";
   else color_to_move = "white";
