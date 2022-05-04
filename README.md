@@ -1,7 +1,6 @@
 ## Flower Chess 
 
-**Language**: C++ <br/>
-**Library**: SFML <br/>
+Chess game written in C++ using SFML library. <br/>
 
 [Pieces images](https://commons.wikimedia.org/wiki/Category:PNG_chess_pieces/Standard_transparent)
 
