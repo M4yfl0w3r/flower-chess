@@ -31,6 +31,7 @@ set(SOURCE
   src/main.cpp
   src/Chess_Piece.cpp
   src/Flower_Board.cpp
+  src/Flower_Menu.cpp
   src/Game_Window.cpp
   src/flower_vector.cpp
 )
