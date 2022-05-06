@@ -72,7 +72,11 @@ auto Flower_Board::on_mouse_pressed(int x, int y) -> void
     {
       piece_clicked = true;
     }
+
+    return;
   }
+
+  return;
 }
 
 auto Flower_Board::on_mouse_moved(int x, int y) -> void

@@ -30,7 +30,7 @@ public:
     lost = false;
 
   std::string 
-    color_to_move = "",
+    color_to_move = "white",
     color_chosen = "";
 
 public:
