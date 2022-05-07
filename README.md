@@ -52,7 +52,8 @@ Chess game written in C++ using SFML library. <br/>
 <br/>
 
 ### Known bugs
-- if piece\_1 capture piece\_2 (then if you click random piece it will capture piece_1)
+- jumping over pieces
+- pawns movement (2 fields move)
 
 <br/>
 
