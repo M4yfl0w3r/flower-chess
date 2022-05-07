@@ -123,8 +123,8 @@ auto Flower_Board::on_mouse_released() -> void
       remaining_pieces.erase(remaining_pieces.begin() + piece_in_danger);
       change_turn(current_piece_to_move);
       current_piece_to_move = 1000;
-      x_update = 0;
-      y_update = 0;
+      x_update = 1000;
+      y_update = 1000;
     }
   }
 }
