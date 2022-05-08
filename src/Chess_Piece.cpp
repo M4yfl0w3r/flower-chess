@@ -85,7 +85,7 @@ auto Pawn_Piece::move_valid(int x, int y, bool is_field_empty) -> bool
     {
       valid_positions.insert(std::pair<int, int>(pos_x, pos_y + 1));
 
-      if (x == pos_x && y == (pos_y + 2))
+      if (x == pos_x && pos_y == 1)
       {
         valid_positions.insert(std::pair<int, int>(pos_x, pos_y + 2));
       }
@@ -94,7 +94,7 @@ auto Pawn_Piece::move_valid(int x, int y, bool is_field_empty) -> bool
     {
       valid_positions.insert(std::pair<int, int>(pos_x, pos_y - 1));
 
-      if (x == pos_x && y == (pos_y - 2))
+      if (x == pos_x && pos_y == 6)
       {
         valid_positions.insert(std::pair<int, int>(pos_x, pos_y - 2));
       }
