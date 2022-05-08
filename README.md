@@ -53,7 +53,6 @@ Chess game written in C++ using SFML library. <br/>
 
 ### Known bugs
 - jumping over pieces
-- pawns movement (2 fields move)
 
 <br/>
 
