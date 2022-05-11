@@ -34,15 +34,15 @@ auto Chess_Piece::draw(sf::RenderTarget& target, sf::RenderStates states) const 
 
 King_Piece::King_Piece(const std::string& filename, int x, int y, const std::string& color, const std::string& name) : Chess_Piece(filename, x, y, color, name) {}
 
-Queen_Piece::Queen_Piece(const std::string& filename, int x, int y, const std::string& color) : Chess_Piece(filename, x, y, color) {}
+Queen_Piece::Queen_Piece(const std::string& filename, int x, int y, const std::string& color, const std::string& name) : Chess_Piece(filename, x, y, color, name) {}
 
-Bishop_Piece::Bishop_Piece(const std::string& filename, int x, int y, const std::string& color) : Chess_Piece(filename, x, y, color) {}
+Bishop_Piece::Bishop_Piece(const std::string& filename, int x, int y, const std::string& color, const std::string& name) : Chess_Piece(filename, x, y, color, name) {}
 
-Pawn_Piece::Pawn_Piece(const std::string& filename, int x, int y, const std::string& color) : Chess_Piece(filename, x, y, color) {}
+Pawn_Piece::Pawn_Piece(const std::string& filename, int x, int y, const std::string& color, const std::string& name) : Chess_Piece(filename, x, y, color, name) {}
 
-Rook_Piece::Rook_Piece(const std::string& filename, int x, int y, const std::string& color) : Chess_Piece(filename, x, y, color) {}
+Rook_Piece::Rook_Piece(const std::string& filename, int x, int y, const std::string& color, const std::string& name) : Chess_Piece(filename, x, y, color, name) {}
 
-Knight_Piece::Knight_Piece(const std::string& filename, int x, int y, const std::string& color) : Chess_Piece(filename, x, y, color) {}
+Knight_Piece::Knight_Piece(const std::string& filename, int x, int y, const std::string& color, const std::string& name) : Chess_Piece(filename, x, y, color, name) {}
 
 auto King_Piece::move_valid(int x, int y, bool is_field_empty) -> bool
 {

@@ -51,7 +51,7 @@ class Queen_Piece: public Chess_Piece
 {
 
 public:
-  Queen_Piece(const std::string&, int, int, const std::string&);
+  Queen_Piece(const std::string&, int, int, const std::string&, const std::string&);
   
   auto move_valid(int, int, bool) -> bool override;
 };
@@ -61,7 +61,7 @@ class Bishop_Piece : public Chess_Piece
 {
 
 public:
-  Bishop_Piece(const std::string&, int, int, const std::string&); 
+  Bishop_Piece(const std::string&, int, int, const std::string&, const std::string&); 
   
   auto move_valid(int, int, bool) -> bool override;
 };
@@ -70,7 +70,7 @@ class Pawn_Piece : public Chess_Piece
 {
 
 public:
-  Pawn_Piece(const std::string&, int, int, const std::string&); 
+  Pawn_Piece(const std::string&, int, int, const std::string&, const std::string&); 
 
   auto move_valid(int, int, bool) -> bool override;
   auto move_valid_capture(int, int) -> bool;
@@ -81,7 +81,7 @@ class Rook_Piece : public Chess_Piece
 {
 
 public:
-  Rook_Piece(const std::string&, int, int, const std::string&); 
+  Rook_Piece(const std::string&, int, int, const std::string&, const std::string&); 
 
   auto move_valid(int, int, bool) -> bool override;
 };
@@ -90,7 +90,7 @@ class Knight_Piece : public Chess_Piece
 {
 
 public:
-  Knight_Piece(const std::string&, int, int, const std::string&); 
+  Knight_Piece(const std::string&, int, int, const std::string&, const std::string&); 
 
   auto move_valid(int, int, bool) -> bool override;
 };

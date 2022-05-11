@@ -2,32 +2,32 @@
 
 Flower_Board::Flower_Board() 
 {
-  remaining_pieces.flower_push_back(new Rook_Piece("b_rook.png", 0, 0, "white"));
-  remaining_pieces.flower_push_back(new Rook_Piece("w_rook.png", 0, 7, "black"));
-  remaining_pieces.flower_push_back(new Rook_Piece("b_rook.png", 7, 0, "black"));
-  remaining_pieces.flower_push_back(new Rook_Piece("w_rook.png", 7, 7, "white"));
+  remaining_pieces.flower_push_back(new Rook_Piece("b_rook.png", 0, 0, "white", "rook"));
+  remaining_pieces.flower_push_back(new Rook_Piece("w_rook.png", 0, 7, "black", "rook"));
+  remaining_pieces.flower_push_back(new Rook_Piece("b_rook.png", 7, 0, "black", "rook"));
+  remaining_pieces.flower_push_back(new Rook_Piece("w_rook.png", 7, 7, "white", "rook"));
 
-  remaining_pieces.flower_push_back(new Knight_Piece("b_knight.png", 1, 0, "black"));
-  remaining_pieces.flower_push_back(new Knight_Piece("w_knight.png", 1, 7, "white"));
-  remaining_pieces.flower_push_back(new Knight_Piece("b_knight.png", 6, 0, "black"));
-  remaining_pieces.flower_push_back(new Knight_Piece("w_knight.png", 6, 7, "white"));
+  remaining_pieces.flower_push_back(new Knight_Piece("b_knight.png", 1, 0, "black", "knight"));
+  remaining_pieces.flower_push_back(new Knight_Piece("w_knight.png", 1, 7, "white", "knight"));
+  remaining_pieces.flower_push_back(new Knight_Piece("b_knight.png", 6, 0, "black", "knight"));
+  remaining_pieces.flower_push_back(new Knight_Piece("w_knight.png", 6, 7, "white", "knight"));
 
-  remaining_pieces.flower_push_back(new Bishop_Piece("b_bishop.png", 2, 0, "black"));
-  remaining_pieces.flower_push_back(new Bishop_Piece("w_bishop.png", 2, 7, "white"));
-  remaining_pieces.flower_push_back(new Bishop_Piece("b_bishop.png", 5, 0, "black"));
-  remaining_pieces.flower_push_back(new Bishop_Piece("w_bishop.png", 5, 7, "white"));
+  remaining_pieces.flower_push_back(new Bishop_Piece("b_bishop.png", 2, 0, "black", "bishop"));
+  remaining_pieces.flower_push_back(new Bishop_Piece("w_bishop.png", 2, 7, "white", "bishop"));
+  remaining_pieces.flower_push_back(new Bishop_Piece("b_bishop.png", 5, 0, "black", "bishop"));
+  remaining_pieces.flower_push_back(new Bishop_Piece("w_bishop.png", 5, 7, "white", "bishop"));
 
-  remaining_pieces.flower_push_back(new Queen_Piece("b_queen.png", 3, 0, "black"));
-  remaining_pieces.flower_push_back(new Queen_Piece("w_queen.png", 3, 7, "white"));
+  remaining_pieces.flower_push_back(new Queen_Piece("b_queen.png", 3, 0, "black", "queen"));
+  remaining_pieces.flower_push_back(new Queen_Piece("w_queen.png", 3, 7, "white", "queen"));
   
   remaining_pieces.flower_push_back(new King_Piece("b_king.png", 4, 0, "black", "king"));
   remaining_pieces.flower_push_back(new King_Piece("w_king.png", 4, 7, "white", "king"));
 
   for (int i = 0; i < 8; i++)
-    remaining_pieces.flower_push_back(new Pawn_Piece("w_pawn.png", i, 6, "white"));
+    remaining_pieces.flower_push_back(new Pawn_Piece("w_pawn.png", i, 6, "white", "pawn"));
 
   for (int i = 0; i < 8; i++)
-    remaining_pieces.flower_push_back(new Pawn_Piece("b_pawn.png", i, 1, "black"));
+    remaining_pieces.flower_push_back(new Pawn_Piece("b_pawn.png", i, 1, "black", "pawn"));
 }
 
 auto Flower_Board::draw(sf::RenderTarget& target, sf::RenderStates states) const -> void
@@ -147,6 +147,15 @@ auto Flower_Board::field_empty(int x, int y) const -> bool
 
   return true;
 }
+
+/*
+auto Flower_Board::check_path(std::pair<int, int> from, std::pair<int, int> to) const -> bool
+{
+   switch (remaining_pieces[current_piece_to_move] -> )
+
+  return false;
+}
+*/
 
 auto Flower_Board::piece_chosen(int* piece, int x, int y) -> int
 {

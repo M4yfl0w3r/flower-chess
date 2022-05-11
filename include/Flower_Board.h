@@ -44,11 +44,11 @@ public:
 private:
   auto piece_chosen(int*, int, int) -> int;
   auto field_empty(int, int) const -> bool;
+  auto check_path(std::pair<int, int>, std::pair<int, int>) const -> bool;
   auto update_piece_position(int, int) -> void;
   auto change_turn(int) -> void;
 
 private:
 	auto draw(sf::RenderTarget&, sf::RenderStates) const -> void override;
-
 };
 
