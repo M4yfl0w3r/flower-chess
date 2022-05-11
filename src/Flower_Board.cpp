@@ -148,15 +148,6 @@ auto Flower_Board::field_empty(int x, int y) const -> bool
   return true;
 }
 
-/*
-auto Flower_Board::check_path(std::pair<int, int> from, std::pair<int, int> to) const -> bool
-{
-   switch (remaining_pieces[current_piece_to_move] -> )
-
-  return false;
-}
-*/
-
 auto Flower_Board::piece_chosen(int* piece, int x, int y) -> int
 {
   for (std::size_t i = 0; i < remaining_pieces.flower_size(); i++)

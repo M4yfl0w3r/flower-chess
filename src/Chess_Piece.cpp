@@ -226,7 +226,7 @@ auto Bishop_Piece::move_valid(int x, int y, bool is_field_empty) -> bool
 
   i = 0;
 
-  while (pos_x - i > 0)
+  while (pos_x - i >= 0)
   {
     valid_positions.insert(std::pair<int, int>(pos_x - i, pos_y - i));  
     valid_positions.insert(std::pair<int, int>(pos_x - i, pos_y + i));  

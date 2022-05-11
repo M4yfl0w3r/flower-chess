@@ -20,6 +20,7 @@ public:
     mouse_pos_y = 0,
     current_piece_to_move = 1000,   // index of current clicked piece
     piece_in_danger = 1000,   // index of piece to be captured
+    // piece_on_path = 1000,  
     x_update = 0,
     y_update = 0;
 
@@ -44,7 +45,7 @@ public:
 private:
   auto piece_chosen(int*, int, int) -> int;
   auto field_empty(int, int) const -> bool;
-  auto check_path(std::pair<int, int>, std::pair<int, int>) const -> bool;
+  // auto check_path(std::pair<int, int>) -> bool;
   auto update_piece_position(int, int) -> void;
   auto change_turn(int) -> void;
 
