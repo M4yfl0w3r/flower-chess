@@ -26,7 +26,6 @@ if (NOT SFML_POPULATED)
   endif()
 endif()
 
-
 set(SOURCE 
   src/main.cpp
   src/Chess_Piece.cpp
