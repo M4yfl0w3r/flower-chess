@@ -6,18 +6,6 @@ Chess game written in C++ using SFML library. <br/>
 
 ### How to run
 
-- Install SFML library (Arch Linux)<br/>
-
-  ```
-  sudo pacman -S sfml
-  ```
-
-- Install CMake (Arch Linux)
-
-  ```
-  sudo pacman -S cmake
-  ```
-
 - Clone the repository
 
   ```
@@ -45,9 +33,10 @@ Chess game written in C++ using SFML library. <br/>
 - Run the game 
 
   ```
-  ./flower-chess
+  ./game
   ```
 
+CMake automatically download SFML and link it to the program.
 
 <br/>
 
