@@ -46,10 +46,10 @@ CMake automatically download SFML and link it to the program.
 <br/>
 
 ### To do
-- get rid of multiple map
 - change pawn to other piece 
-- king have to be captured to win a game
 - add check
+- add check warning
+- make better menu
 
 
 
