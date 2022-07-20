@@ -9,9 +9,8 @@ class Flower_Menu
 {
   std::unique_ptr<sf::RenderWindow> menu;
 
-  inline static const int 
-    width = 480,
-    height = 480;
+  inline static constexpr int width {480};
+  inline static constexpr int height {480};
 
 public:
   Flower_Menu();
