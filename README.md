@@ -46,9 +46,9 @@ o jumping over pieces
 <br/>
 
 <h4> To do </h4>
-o change pawn to other piece \
-o add check \
-o add check warning \
+o change pawn to other piece \\
+o add check \\
+o add check warning \\
 o make better menu
 
 
