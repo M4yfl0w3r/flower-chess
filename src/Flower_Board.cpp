@@ -137,7 +137,7 @@ auto Flower_Board::change_turn(int current_piece_to_move) -> void
 
 auto Flower_Board::field_empty(int x, int y) const -> bool
 {
-  for (std::size_t i = 0; i < remaining_pieces.flower_size(); i++)
+  for (auto i = 0; i < remaining_pieces.flower_size(); i++)
   {
     if (remaining_pieces[i] -> pos_x == x && remaining_pieces[i] -> pos_y == y)
     {
@@ -150,7 +150,7 @@ auto Flower_Board::field_empty(int x, int y) const -> bool
 
 auto Flower_Board::piece_chosen(int* piece, int x, int y) -> int
 {
-  for (std::size_t i = 0; i < remaining_pieces.flower_size(); i++)
+  for (auto i = 0; i < remaining_pieces.flower_size(); i++)
   {
     if (remaining_pieces[i] -> pos_x == x && remaining_pieces[i] -> pos_y == y)
     {

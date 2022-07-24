@@ -1,10 +1,10 @@
-## Flower Chess 
+<h3> Flower Chess </h3>
 
 Chess game written in C++ using SFML library. <br/>
 
 [Pieces images](https://commons.wikimedia.org/wiki/Category:PNG_chess_pieces/Standard_transparent)
 
-### How to run
+<h4> How to run </h4>
 
 - Clone the repository
 
@@ -40,16 +40,16 @@ CMake automatically download SFML and link it to the program.
 
 <br/>
 
-### Known bugs
-- jumping over pieces
+<h4> Known bugs </h4>
+o jumping over pieces
 
 <br/>
 
-### To do
-- change pawn to other piece 
-- add check
-- add check warning
-- make better menu
+<h4> To do </h4>
+o change pawn to other piece \
+o add check \
+o add check warning \
+o make better menu
 
 
 
